@@ -22,7 +22,7 @@ Public Class Form1
     Private Sub ButtonInsert_Click(sender As Object, e As EventArgs) Handles ButtonInsert.Click
         Dim query As String = "INSERT INTO students_tbl (name, age, email) VALUES (name, age, email)"
         Try
-            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=crud_demo_db")
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=crud_demo_db;")
                 conn.Open()
                 Using cmd As New MySqlCommand(query, conn)
                     cmd.Parameters.AddWithValue("@name", TextBoxName.Text)
