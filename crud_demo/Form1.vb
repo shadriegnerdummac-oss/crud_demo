@@ -39,12 +39,67 @@ Public Class Form1
 
     Private Sub ButtonRead_Click(sender As Object, e As EventArgs) Handles ButtonRead.Click
         Dim query As String = "SELECT * FROM crud_demo_db.students_tbl;"
+        'Dim query As String = "SELECT name, age, email FROM crud_demo_db.students_tbl;"
+
         Try
             Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=crud_demo_db;")
                 Dim adapter As New MySqlDataAdapter(query, conn)
                 Dim table As New DataTable()    'Table Object
                 adapter.Fill(table)     'From Adapter to Table Object
                 DataGridView1.DataSource = table    'Display to DataGridView
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ButtonUpdate_Click(sender As Object, e As EventArgs) Handles ButtonUpdate.Click
+        Dim query As String = "UPDAte students_tbl SET name=@name, age=@age, email=@email WHERE id=@id"
+        Try
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=crud_demo_db;")
+                conn.Open()
+                Using cmd As New MySqlCommand(query, conn)
+                    cmd.Parameters.AddWithValue("@name", TextBoxName.Text)
+                    cmd.Parameters.AddWithValue("@age", CInt(TextBoxAge.Text))
+                    cmd.Parameters.AddWithValue("@email", TextBoxEmail.Text)
+                    Dim selectedId As Integer = CInt(DataGridView1.CurrentRow.Cells("id").Value)
+                    cmd.Parameters.AddWithValue("@id", selectedId)
+                    cmd.ExecuteNonQuery()
+                    MessageBox.Show("Record Insert Successfully!")
+                End Using
+            End Using
+        Catch ex As Exception
+            MsgBox(ex.Message)
+        End Try
+    End Sub
+
+    Private Sub ButtonDelete_Click(sender As Object, e As EventArgs) Handles ButtonDelete.Click
+        Dim query As String = "DELETE FROM students_tbl WHERE id=@id"
+
+        Try
+            ' Make sure a row is selected
+            If DataGridView1.CurrentRow Is Nothing Then
+                MessageBox.Show("Please select a record to delete.")
+                Exit Sub
+            End If
+
+            ' confirming delete
+            If MessageBox.Show("Are you sure you want to delete this record?",
+                           "Confirm Delete",
+                           MessageBoxButtons.YesNo,
+                           MessageBoxIcon.Warning) = DialogResult.No Then
+                Exit Sub
+            End If
+
+            Using conn As New MySqlConnection("server=localhost; userid=root; password=root; database=crud_demo_db;")
+                conn.Open()
+                Using cmd As New MySqlCommand(query, conn) ' get selected id from datagridview
+                    Dim selectedId As Integer = CInt(DataGridView1.CurrentRow.Cells("id").Value)
+                    cmd.Parameters.AddWithValue("@id", selectedId)
+
+                    cmd.ExecuteNonQuery()
+                    MessageBox.Show("Record Deleted Successfully!")
+                End Using
             End Using
         Catch ex As Exception
             MsgBox(ex.Message)
