@@ -15,8 +15,6 @@ Public Class Form1
             MessageBox.Show(ex.Message)
             conn.Close()
         End Try
-
-
     End Sub
 
     Private Sub ButtonInsert_Click(sender As Object, e As EventArgs) Handles ButtonInsert.Click
