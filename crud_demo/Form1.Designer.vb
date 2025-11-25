@@ -34,6 +34,7 @@ Partial Class Form1
         Me.ButtonRead = New System.Windows.Forms.Button()
         Me.ButtonUpdate = New System.Windows.Forms.Button()
         Me.ButtonDelete = New System.Windows.Forms.Button()
+        Me.TextBoxHiddenId = New System.Windows.Forms.TextBox()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -49,7 +50,7 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(177, 19)
+        Me.Label1.Location = New System.Drawing.Point(177, 41)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(41, 13)
         Me.Label1.TabIndex = 1
@@ -57,14 +58,14 @@ Partial Class Form1
         '
         'TextBoxName
         '
-        Me.TextBoxName.Location = New System.Drawing.Point(224, 12)
+        Me.TextBoxName.Location = New System.Drawing.Point(224, 38)
         Me.TextBoxName.Name = "TextBoxName"
         Me.TextBoxName.Size = New System.Drawing.Size(377, 20)
         Me.TextBoxName.TabIndex = 2
         '
         'TextBoxAge
         '
-        Me.TextBoxAge.Location = New System.Drawing.Point(224, 38)
+        Me.TextBoxAge.Location = New System.Drawing.Point(224, 64)
         Me.TextBoxAge.Name = "TextBoxAge"
         Me.TextBoxAge.Size = New System.Drawing.Size(377, 20)
         Me.TextBoxAge.TabIndex = 4
@@ -72,7 +73,7 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(177, 45)
+        Me.Label2.Location = New System.Drawing.Point(177, 67)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(32, 13)
         Me.Label2.TabIndex = 3
@@ -80,7 +81,7 @@ Partial Class Form1
         '
         'TextBoxEmail
         '
-        Me.TextBoxEmail.Location = New System.Drawing.Point(224, 64)
+        Me.TextBoxEmail.Location = New System.Drawing.Point(224, 90)
         Me.TextBoxEmail.Name = "TextBoxEmail"
         Me.TextBoxEmail.Size = New System.Drawing.Size(377, 20)
         Me.TextBoxEmail.TabIndex = 6
@@ -88,7 +89,7 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(176, 67)
+        Me.Label3.Location = New System.Drawing.Point(177, 93)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(42, 13)
         Me.Label3.TabIndex = 5
@@ -138,11 +139,19 @@ Partial Class Form1
         Me.ButtonDelete.Text = "DELETE (Remove Data)"
         Me.ButtonDelete.UseVisualStyleBackColor = True
         '
+        'TextBoxHiddenId
+        '
+        Me.TextBoxHiddenId.Location = New System.Drawing.Point(224, 12)
+        Me.TextBoxHiddenId.Name = "TextBoxHiddenId"
+        Me.TextBoxHiddenId.Size = New System.Drawing.Size(377, 20)
+        Me.TextBoxHiddenId.TabIndex = 12
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.TextBoxHiddenId)
         Me.Controls.Add(Me.ButtonDelete)
         Me.Controls.Add(Me.ButtonUpdate)
         Me.Controls.Add(Me.ButtonRead)
@@ -175,4 +184,5 @@ Partial Class Form1
     Friend WithEvents ButtonRead As Button
     Friend WithEvents ButtonUpdate As Button
     Friend WithEvents ButtonDelete As Button
+    Friend WithEvents TextBoxHiddenId As TextBox
 End Class
